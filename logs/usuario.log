@@ -1,0 +1,7 @@
+2024-11-26 01:40:59: Table 'alojamiento.usuarioss' doesn't exist
+2024-11-26 01:41:41: Table 'alojamiento.usuarioss' doesn't exist
+2024-11-26 01:41:47: Table 'alojamiento.usuarioss' doesn't exist
+2024-11-26 01:47:37: Table 'alojamiento.usuariossss' doesn't exist
+2024-11-26 01:48:02: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'identificacion, nombre, nombre_usuario, clave, correo) 
+        VALUES ('090909' at line 1
+2024-12-03 01:40:08: Data truncated for column 'tipo' at row 1
