@@ -53,19 +53,14 @@
           success: function (resultado) {
             if (resultado.estado === "exito") {
               alert("Usuario verificado");
+             window.open("index.html", "_self");
+              //localStorage.setItem("jwt", resultado.jwt); // Nuevo
             } else {
               alert("Usuario y/o contraseña inválidos");
             }
           }
         });
-
-      
-
     });
-
-
-
-
   </script>
 </body>
 

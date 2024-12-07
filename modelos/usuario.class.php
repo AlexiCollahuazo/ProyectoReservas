@@ -1,5 +1,6 @@
 <?php
-
+require_once '../vendor/autoload.php';
+use \Firebase\JWT\JWT;
 class Usuario
 {
     //Declaracion de nuestras variables
@@ -145,7 +146,6 @@ class Usuario
     }
 
     function validarAccesos($nombre_usuario, $clave){
-        
         $sql = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' AND clave = '$clave'";
         try{
             $resultados = $this->conexion->query($sql);
@@ -153,13 +153,62 @@ class Usuario
                 return true;
             }else{
                 return false;
-            }
-            
+            }  
         }catch(Exception $e){
             //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
                    }
+            
+     /*    $sql = "SELECT id, nombre_usuario, clave FROM usuarios WHERE nombre_usuario = ?";
+        
+        try {
+            // Usamos consultas preparadas para evitar inyecciones SQL
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bind_param("s", $nombre_usuario);  // El parámetro es un string (s)
+            $stmt->execute();
+            $resultados = $stmt->get_result();
+            
+            if ($resultados->num_rows > 0) {
+                // Obtener los datos del usuario
+                $usuario = $resultados->fetch_assoc();
+
+                // Verificar la contraseña usando password_verify
+                if (password_verify($clave, $usuario['clave'])) {
+                    // Si las credenciales son correctas, generar el JWT
+                    return $this->generarJWT($usuario['id'], $usuario['nombre_usuario']);
+                } else {
+                    return false; // Contraseña incorrecta
+                }
+            } else {
+                return false; // Usuario no encontrado
+            }
+
+        } catch (Exception $e) {
+            guardarLog("usuario.log", $e->getMessage());
+            return false;
+        }
+            */
     }
+
+
+    private function generarJWT($id_usuario, $nombre_usuario) {
+        $clave_secreta = "mi_clave_secreta"; 
+        
+ 
+        $issuedAt = time();
+        $expirationTime = $issuedAt + 3600;  
+        $payload = array(
+            "iat" => $issuedAt,    
+            "exp" => $expirationTime, 
+            "data" => array(
+                "id" => $id_usuario,
+                "nombre_usuario" => $nombre_usuario
+            )
+        );
+        // Codificar el JWT y retornarlo
+       return JWT::encode($payload, $clave_secreta, 'HS256');
+    }
+
 
     
 }

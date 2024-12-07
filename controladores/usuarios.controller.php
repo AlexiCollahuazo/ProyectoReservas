@@ -5,7 +5,6 @@ include_once("../utilidades/funciones.php");
 include_once("../modelos/usuario.class.php");
 
 class UsuarioController{
-
     private $usuario;
 
     function __construct(){
@@ -54,11 +53,17 @@ class UsuarioController{
         }else{
             echo json_encode(array("estado" => "error"));
         }
+         
+       // $jwt = $this->usuario->validarAccesos($nombre_usuario, $clave);
+       // return $jwt;
     }
 
 }
 
 $obj = new UsuarioController();
+$_POST['opcion'] = "validar_accesos";
+$_POST['nombre_usuario'] = "arodriguez";
+$_POST['clave'] = "1234";
 
 $opcion = $_POST['opcion'];
 switch($opcion){
@@ -87,7 +92,16 @@ switch($opcion){
     case "validar_accesos":
         header("content-type: application/json");
         $obj->validarAccesos($_POST['nombre_usuario'], $_POST['clave']);
-        break;     
+
+/*$jwt = $obj->validarAccesos($_POST['nombre_usuario'], $_POST['clave']);
+        
+        if ($jwt) {
+           
+            echo json_encode(array("estado" => "exito", "jwt" => $jwt));
+        } else {
+            echo json_encode(array("estado" => "error", "mensaje" => "Credenciales incorrectas"));
+        }
+        break; */    
 }
 
 
