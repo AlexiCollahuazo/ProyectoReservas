@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlantic Hotel</title>
+
+    <!--CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../views/css/pag_principal.css" rel="stylesheet">
+  </head>
+<body>
+     <!--Navegación-->
+     <nav class="navbar border-bottom border-body navbar-expand-lg" data-bs-theme="dark" id="franja">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="./img/logo.png" alt="Logo Atlantic Hotel" width="45" height="45">
+                <span class="navbar-brand mb-0 h1">Atlantic Hotel</span>
+            </a>
+            <!--Parte responsiva-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Otras secciones-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!--Inicio-->
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                </li>
+                <!--Habitaciones-->
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html#habitaciones">Habitaciones</a>
+                </li>
+                <!--Contactos-->
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contactanos">Contáctenos</a>
+                  </li>
+                <!--Logueo-->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reservas
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./plataformas/iniciar_sesion.html">Iniciar Sesión</a></li>
+                    <li><a class="dropdown-item" href="./plataformas/registro.html">Crear cuenta</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Sliders-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 0"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img src="../views/img/pag_principal/sliders/sliders0.jpg" id="sliders" class="d-block w-100" alt="Habitacion - Slider">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="../views/img/pag_principal/sliders/slider1.jpg" id="sliders" class="d-block w-100" alt="Habitacion - Slider">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/pag_principal/sliders/sliders2.jpg" id="sliders" class="d-block w-100" alt="Habitacion - Slider">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/pag_principal/sliders/slider3.jpg" id="sliders" class="d-block w-100" alt="Habitacion - Slider">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/pag_principal/sliders/slider4.jpg" id="sliders" class="d-block w-100" alt="Habitacion - Slider">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+      
+    <!--Sección de Bienvenida-->
+    <section>
+      <!--Franja-->
+      <div class="row align-items-center text-center" id="franja">
+        <h1>Atlantic Hotel</h1>
+      </div>
+      <div class="container text-center">
+        <!--Parrafo-->
+        <div class="row align-items-center">
+          <div class="col">
+            <h1>Bienvenid@ a su hogar lejos de casa</h1> 
+            <p>Nos complace recibirles en nuestro hotel. Desde el momento en que cruce nuestras puertas, nuestro compromiso es hacer de su estancia una experiencia inolvidable, ya sea que nos visite por placer, negocios o una escapada especial. Disfrute de nuestras instalaciones cuidadosamente preparadas para su descanso. ¡Estamos aquí para hacer que su visita sea perfecta en cada detalle!</p>
+          </div>
+          <!--Imagen-->
+          <div class="col">
+            <img src="./img/pag_principal/servicios_ofrecidos/restaurante.jpg" class="card-img-top" alt="Restaurante" height="100%" weight="100%">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Sección de Servicios-->
+    <section>
+      <!--Franja-->
+      <div class="row align-items-center text-center" id="franja">
+        <h1>Servicios</h1>
+      </div>
+      <div class="container text-center">
+      <!--Cartas-->
+      <center>
+          <div class="row mt-4" >
+            <!--Carta 1-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/pag_principal/servicios_ofrecidos/piscina.jpg" class="card-img-top" alt="piscina" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Área de Relajación y Piscina</h4>
+                    <p class="card-text">Disfruta de nuestras exclusivas áreas de relajación con una piscina de lujo, diseñada para brindarte el descanso que mereces durante tu estadía.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 2-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="img/pag_principal/servicios_ofrecidos/sala.jpg" class="card-img-top" alt="salón de eventos" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Espacios para Eventos y Reuniones</h4>
+                    <p class="card-text">Ofrecemos modernos salones de reuniones equipados para garantizar el éxito de tus eventos corporativos o sociales.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 3-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="img/pag_principal/servicios_ofrecidos/tarifa.jpg" class="card-img-top" alt="Atención personalizada" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Atención Personalizada 24/7</h4>
+                    <p class="card-text">Nuestro servicio de recepción 24/7 está siempre disponible para atender tus necesidades y garantizar una experiencia excepcional.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </center>
+      </section>
+
+  <!--Sección de Habitaciones-->
+  <section id="habitaciones">
+    <!--Franja-->
+    <div class="row align-items-center text-center mt-4" id="franja">
+      <h1>Habitaciones</h1>
+    </div>
+
+    <!--Cartas-->
+    <div class="container text-center">
+      <center>
+          <!--Fila 1-->
+          <div class="row mt-4" > 
+            <!--Carta 1-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/1.jpg" class="card-img-top" alt="Joker 2" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Habitación Doble Deluxe</h4>
+                    <p class="card-text">Habitación doble con un diseño contemporáneo, ideal para relajarte con total comodidad. Incluye iluminación cálida y un ambiente acogedor.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 2-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/2.jpg" class="card-img-top" alt="Venom 3" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Cabaña Rústica</h4>
+                    <p class="card-text">Disfruta de una experiencia única en esta habitación con detalles de madera y techos altos. Perfecta para quienes buscan calidez y tranquilidad.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 3-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/3.jpg" class="card-img-top" alt="Mi amigo el pinguino" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Suite Premium con Terraza</h4>
+                    <p class="card-text">Amplia habitación con decoración moderna, grandes ventanales y un ambiente relajante para una estadía inolvidable.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!--Fila 2-->
+          <div class="row mt-4" >
+            <!--Carta 1-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/4.jpg" class="card-img-top" alt="Joker 2" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Suite Clásica Ejecutiva</h4>
+                    <p class="card-text">Habitación diseñada para ofrecer un ambiente clásico y cómodo. Ideal para quienes valoran el estilo tradicional y la tranquilidad.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 2-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/5.jpg" class="card-img-top" alt="Venom 3" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Habitación Bohemia</h4>
+                    <p class="card-text">Acogedora habitación con detalles decorativos únicos y un rincón ideal para relajarse o trabajar cómodamente.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 3-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/6.jpg" class="card-img-top" alt="Mi amigo el pinguino" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Habitación Minimalista Zen</h4>
+                    <p class="card-text">Habitación con diseño minimalista y moderno, perfecta para quienes buscan simplicidad sin perder estilo.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!--Fila 3-->
+          <div class="row mt-4" >
+            <!--Carta 1-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/7.jpg" class="card-img-top" alt="Joker 2" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Suite Contemporánea Superior</h4>
+                    <p class="card-text">Habitación amplia y moderna con diseño minimalista. Perfecta para una experiencia de lujo con detalles que garantizan comodidad y privacidad.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 2-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/8.jpg" class="card-img-top" alt="Venom 3" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Habitación Doble Tradicional</h4>
+                    <p class="card-text">Un espacio acogedor y luminoso con camas individuales y decoración clásica. Ideal para amigos o compañeros de viaje que buscan confort.</p>
+                  </div>
+                </div>
+            </div>
+            <!--Carta 3-->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                  <img src="./img/admin/habitaciones/9.jpg" class="card-img-top" alt="Mi amigo el pinguino" height="280 px">
+                  <div class="card-body">
+                    <h4 class="card-title">Habitación Vintage con Terraza</h4>
+                    <p class="card-text">Ambiente rústico con una terraza cubierta que ofrece vistas únicas. Una opción encantadora para quienes buscan un espacio acogedor y relajante.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+      </center>
+    </div>
+
+    <!--Sección de contáctanos-->
+    <section id="contactanos" class="mt-4">
+      <!--Franja-->
+      <div class="row align-items-center text-center" id="franja">
+        <h1>Contáctanos</h1>
+      </div>
+
+      <div class="container">
+        <div class="row align-items-center">  
+          
+          <div class="col">
+            <h1>Contáctenos estamos a sus ordenes</h1>
+            <p>En Atlactic Hotel estamos comprometidos con la hospitalidad y buen servicio para todos nuestros huéspedes. Viva una experiencia inolvidable, contáctenos YA...</p>
+          </div>
+
+          <div class="col">
+            <form class="mt-4">
+              <div class="mb-3" class="container">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input id="nombre" class="form-control"  type="text">
+              </div>
+              <div class="mb-3">
+                  <label  for="email" class="form-label">Correo electrónico</label>
+                  <input id="email" class="form-control" type="email">
+              </div>
+              <div class="mb-3">
+                  <label for="mensaje" class="form-label">Mensaje</label><br>
+                  <textarea id="mensaje" class="form-control"></textarea>
+              </div>
+              <div class="mb-3">
+                  <button class="btn btn-outline-primary" onclick="alert('Enviado')">Aceptar</button>
+                </div>
+                <br>
+                <br>
+            </form>
+          </div>
+
+      </div>
+    </div>
+    </section>
+
+    <!--Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

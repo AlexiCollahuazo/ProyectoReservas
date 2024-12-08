@@ -1,0 +1,53 @@
+/*Todossss*/
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .nav-item {
+    font-family: 'Playfair Display', serif;
+}
+
+/*Nav Bar - Página principal*/
+.nav-item{
+    font-size: 1.2em;
+}
+
+#franja{ /*NavBar*/
+    background-color: black;
+    color: white;
+}
+
+/*---------------Página principal-------------------*/
+#sliders{
+    height: 300px; 
+    object-fit: cover;
+}
+
+#contactanos{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/pag_principal/footer.jpg');
+    color: white;
+}
+
+/*Iniciar sesión y registro*/
+#imagen_fondo {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/pag_principal/sliders/sliders0.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 87.5vh; /* Altura completa de la pantalla */
+  }
+#imagen_fondo h1{
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente del formulario */
+    border-radius: 30px;
+    padding: 20px;
+    width: 400px; /* Ancho del formulario */
+  }
+
+/*Plataforma usuario*/
+
