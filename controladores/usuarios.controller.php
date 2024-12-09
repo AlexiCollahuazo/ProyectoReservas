@@ -53,17 +53,24 @@ class UsuarioController{
         }else{
             echo json_encode(array("estado" => "error"));
         }
-         
        // $jwt = $this->usuario->validarAccesos($nombre_usuario, $clave);
        // return $jwt;
+    }
+    function validarLink($nombre_usuario, $clave){
+        $resultado = $this->usuario->validarLink($nombre_usuario, $clave);
+        if($resultado){
+            echo json_encode(array("tipo" => "General"));
+        }else{
+            echo json_encode(array("tipo" => "General"));
+        }
     }
 
 }
 
 $obj = new UsuarioController();
-$_POST['opcion'] = "validar_accesos";
-$_POST['nombre_usuario'] = "arodriguez";
-$_POST['clave'] = "1234";
+//$_POST['opcion'] = "validar_accesos";
+//$_POST['nombre_usuario'] = "arodriguez";
+//$_POST['clave'] = "1234";
 
 $opcion = $_POST['opcion'];
 switch($opcion){
@@ -92,6 +99,11 @@ switch($opcion){
     case "validar_accesos":
         header("content-type: application/json");
         $obj->validarAccesos($_POST['nombre_usuario'], $_POST['clave']);
+        break;
+    case "validar_link":
+        header("content-type: application/json");
+        $obj->validarLink($_POST['nombre_usuario'], $_POST['clave']);
+        break;
 
 /*$jwt = $obj->validarAccesos($_POST['nombre_usuario'], $_POST['clave']);
         

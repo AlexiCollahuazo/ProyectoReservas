@@ -3,4 +3,4 @@
     $ip = "127.0.0.1";
     $usuario = "root";
     $clave = "";
-    $nombre_bd = "alojamiento";
+    $nombre_bd = "sistema_alojamiento";

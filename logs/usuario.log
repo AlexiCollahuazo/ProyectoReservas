@@ -5,3 +5,35 @@
 2024-11-26 01:48:02: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'identificacion, nombre, nombre_usuario, clave, correo) 
         VALUES ('090909' at line 1
 2024-12-03 01:40:08: Data truncated for column 'tipo' at row 1
+2024-12-09 00:53:55: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '123'),'tjordan@gmail.com', 'GENERAL')' at line 2
+2024-12-09 00:56:31: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '123'),'tjordan@gmail.com', 'GENERAL')' at line 2
+2024-12-09 00:58:33: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '123'),'tjordan@gmail.com', 'GENERAL')' at line 2
+2024-12-09 05:28:12: Unknown column 'id' in 'where clause'
+2024-12-09 05:28:16: Unknown column 'id' in 'where clause'
+2024-12-09 05:31:55: Unknown column 'id' in 'where clause'
+2024-12-09 05:32:00: Unknown column 'id' in 'where clause'
+2024-12-09 05:33:05: Unknown column 'id' in 'where clause'
+2024-12-09 05:33:06: Unknown column 'id' in 'where clause'
+2024-12-09 05:33:43: Unknown column 'id' in 'where clause'
+2024-12-09 05:33:45: Unknown column 'id' in 'where clause'
+2024-12-09 05:39:17: Unknown column 'id' in 'where clause'
+2024-12-09 05:40:09: Unknown column 'id' in 'where clause'
+2024-12-09 05:40:11: Unknown column 'id' in 'where clause'
+2024-12-09 05:40:12: Unknown column 'id' in 'where clause'
+2024-12-09 05:40:50: Unknown column 'id' in 'where clause'
+2024-12-09 05:40:55: Unknown column 'id' in 'where clause'
+2024-12-09 05:44:09: Unknown column 'id' in 'where clause'
+2024-12-09 05:45:27: Unknown column 'id' in 'where clause'
+2024-12-09 05:45:29: Unknown column 'id' in 'where clause'
+2024-12-09 05:45:29: Unknown column 'id' in 'where clause'
+2024-12-09 05:47:50: Unknown column 'id' in 'where clause'
+2024-12-09 05:47:54: Unknown column 'id' in 'where clause'
+2024-12-09 05:50:08: Unknown column 'id' in 'where clause'
+2024-12-09 05:50:12: Unknown column 'id' in 'where clause'
+2024-12-09 05:50:53: Unknown column 'id' in 'where clause'
+2024-12-09 05:51:00: Unknown column 'id' in 'where clause'
+2024-12-09 11:45:30: Unknown column 'id' in 'where clause'
+2024-12-09 11:51:06: Unknown column 'id' in 'where clause'
+2024-12-09 11:51:39: Unknown column 'id' in 'where clause'
+2024-12-09 11:53:01: Unknown column 'id' in 'where clause'
+2024-12-09 12:07:48: Unknown column 'id' in 'where clause'

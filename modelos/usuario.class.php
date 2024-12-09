@@ -23,38 +23,14 @@ class Usuario
         }
     }
 
-    //Accesors -> Getters ans setters
-    public function obtenerNombre()
-    {
-        return $this->nombre;
-    }
-
-    public function colocarNombre($p_nombre)
-    {
-        $this->nombre = $p_nombre;
-    }
-
-    //Método
-    public function obtenerInformacion($nombre)
-    {
-        echo "El nombre es " . $nombre;
-        echo "<br>";
-        echo "El nombre es " . $this->nombre;
-    }
-
-    //CRUD Create - Read - Update - Delete 
-
     public function guardarUsuario($nombre, $identificacion, $nombre_usuario, $correo, $clave, $tipo = 'GENERAL')
     {
-        //El id se genera y el estado será 1 por defecto
-        //Conectarnos a base de datos
         $sql = "INSERT INTO usuarios (identificacion, nombre, nombre_usuario, clave, correo, tipo) 
-        VALUES ('$identificacion','$nombre','$nombre_usuario',' $clave','$correo', '$tipo')";
+        VALUES ('$identificacion','$nombre','$nombre_usuario', MD5('$clave'),'$correo', '$tipo')";
         try{
             $this->conexion->query($sql);
             return true;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return false;
         }
@@ -62,56 +38,44 @@ class Usuario
 
     public function actualizarUsuario($id, $nombre, $identificacion, $nombre_usuario, $correo, $clave, $tipo = 'GENERAL')
     {
-        //El id se genera y el estado será 1 por defecto
-        //Conectarnos a base de datos
         $sql = "UPDATE usuarios SET  nombre = '$nombre', identificacion = '$identificacion',
-        nombre_usuario = '$nombre_usuario', correo = '$correo', clave = '$clave', tipo = '$tipo'
+        nombre_usuario = '$nombre_usuario', correo = '$correo', clave=MD5('$clave'), tipo = '$tipo'
         WHERE id = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return false;
         }
         
     }
 
-    //Hard delete
-    public function eliminarUsuario($id)
+    public function eliminarUsuario($id) //Eliminado físico
     {
-        //El id se genera y el estado será 1 por defecto
-        //Conectarnos a base de datos
         $sql = "DELETE FROM usuarios WHERE id = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return false;
         }
         
     }
 
-    //Soft delete
     public function eliminarUsuarioLogico($id)
     {
-        //El id se genera y el estado será 1 por defecto
-        //Conectarnos a base de datos
         $sql = "UPDATE usuarios SET estado = '0' WHERE id = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return false;
         }
         
     }
-
 
     function obtenerRegistros(){
         $arreglo = [];
@@ -123,7 +87,6 @@ class Usuario
             }
             return $arreglo;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return $arreglo;
         }
@@ -139,14 +102,13 @@ class Usuario
             }
             return $arreglo;
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
             return $arreglo;
         }
     }
-
+    
     function validarAccesos($nombre_usuario, $clave){
-        $sql = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' AND clave = '$clave'";
+        $sql = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' AND clave = MD5('$clave')";
         try{
             $resultados = $this->conexion->query($sql);
             if($resultados->num_rows>0){
@@ -155,41 +117,26 @@ class Usuario
                 return false;
             }  
         }catch(Exception $e){
-            //echo "El error es ".$e->getMessage();
             guardarLog("usuario.log", $e->getMessage());
-                   }
-            
-     /*    $sql = "SELECT id, nombre_usuario, clave FROM usuarios WHERE nombre_usuario = ?";
-        
-        try {
-            // Usamos consultas preparadas para evitar inyecciones SQL
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("s", $nombre_usuario);  // El parámetro es un string (s)
-            $stmt->execute();
-            $resultados = $stmt->get_result();
-            
-            if ($resultados->num_rows > 0) {
-                // Obtener los datos del usuario
-                $usuario = $resultados->fetch_assoc();
-
-                // Verificar la contraseña usando password_verify
-                if (password_verify($clave, $usuario['clave'])) {
-                    // Si las credenciales son correctas, generar el JWT
-                    return $this->generarJWT($usuario['id'], $usuario['nombre_usuario']);
-                } else {
-                    return false; // Contraseña incorrecta
-                }
-            } else {
-                return false; // Usuario no encontrado
-            }
-
-        } catch (Exception $e) {
-            guardarLog("usuario.log", $e->getMessage());
-            return false;
         }
-            */
     }
 
+    function validarLink($nombre_usuario, $clave){
+        $sql = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario' AND clave = MD5('$clave')";
+        try{
+            $resultados = $this->conexion->query($sql);
+            if ($resultados->num_rows > 0) {
+                $usuario = $resultados->fetch_assoc();
+                if ($usuario['tipo'] === "General") {
+                    return true; 
+                } else {
+                    return false; 
+                }
+            }
+        }catch(Exception $e){
+            guardarLog("usuario.log", $e->getMessage());
+        }
+    }
 
     private function generarJWT($id_usuario, $nombre_usuario) {
         $clave_secreta = "mi_clave_secreta"; 
@@ -212,12 +159,3 @@ class Usuario
 
     
 }
-
-//$objUsuario = new Usuario();
-//$objUsuario->guardarUsuario("Luis Gutierrez", "09090909", "lgutierrez",  
-//"lgutierrez@ecotec.edu.ec", "1234");
-//$respuesta = $objUsuario->actualizarUsuario("8", "Pedro Gutierrez", "09090909", "lgutierrez",  
-//"lgutierrez@ecotec.edu.ec", "1234");
-//var_dump($respuesta);
-//$objUsuario->eliminarUsuarioLogico("3");
-//echo json_encode($objUsuario->obtenerRegistros());
