@@ -41,10 +41,8 @@ function obtenerRegistros(){
                         <td>${element.nombre_usuario}</td>
                         <td>${element.correo}</td>
                         <td>${element.tipo}</td>
-                        <td>
-                            <button class='btn btn-primary btn-sm' onclick="editarUsuario(${element.id_usuario})">Editar</button>
-                            <button class='btn btn-primary btn-sm' onclick="eliminarUsuario(${element.id_usuario})">Eliminar</button>
-                        </td>    
+                        <td><button class='btn btn-primary btn-sm' onclick="editarUsuario(${element.id_usuario})">Editar</button></td>
+                        <td><button class='btn btn-primary btn-sm' onclick="eliminarUsuario(${element.id_usuario})">Eliminar</button></td>   
                     </tr>`
                 );
             });

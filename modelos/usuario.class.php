@@ -40,7 +40,7 @@ class Usuario
     {
         $sql = "UPDATE usuarios SET  nombre = '$nombre', identificacion = '$identificacion',
         nombre_usuario = '$nombre_usuario', correo = '$correo', clave=MD5('$clave'), tipo = '$tipo'
-        WHERE id = '$id'";
+        WHERE id_usuario = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
@@ -53,7 +53,7 @@ class Usuario
 
     public function eliminarUsuario($id) //Eliminado físico
     {
-        $sql = "DELETE FROM usuarios WHERE id = '$id'";
+        $sql = "DELETE FROM usuarios WHERE id_usuario = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
@@ -66,7 +66,7 @@ class Usuario
 
     public function eliminarUsuarioLogico($id)
     {
-        $sql = "UPDATE usuarios SET estado = '0' WHERE id = '$id'";
+        $sql = "UPDATE usuarios SET estado = '0' WHERE id_usuario = '$id'";
         try{
             $this->conexion->query($sql);
             return true;
@@ -94,7 +94,7 @@ class Usuario
 
     function obtenerRegistroPorId($id){
         $arreglo = [];
-        $sql = "SELECT * FROM usuarios WHERE id = '$id'";
+        $sql = "SELECT * FROM usuarios WHERE id_usuario = '$id'";
         try{
             $resultados = $this->conexion->query($sql);
             while($fila = $resultados->fetch_assoc()){

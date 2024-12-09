@@ -54,7 +54,6 @@ $("#frm-usuario").submit(function(e){
 });
 
 var idUsuario =  sessionStorage.getItem("id_usuario");
-
 if(idUsuario != null){
     $.ajax("../../../controladores/usuarios.controller.php",{
         data:{
@@ -63,6 +62,7 @@ if(idUsuario != null){
         }, 
         method: 'POST',
         success: function(resultado){
+            console.log(resultado.nombre);
             $("#nombre").val(resultado.nombre);
             $("#identificacion").val(resultado.identificacion);
             $("#nombre_usuario").val(resultado.nombre_usuario);
