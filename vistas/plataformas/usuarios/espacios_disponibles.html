@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacios Disponibles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h3>Espacios Disponibles</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Capacidad</th>
+                    <th>Imagen</th>
+                    <th>Reservar</th>
+                </tr>
+            </thead>
+            <tbody id="espacios-disponibles-body">
+
+            </tbody>
+        </table>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fechaSeleccionada = urlParams.get('fecha');
+
+        if (!fechaSeleccionada) {
+            alert('No se seleccionó ninguna fecha');
+            return;
+        }
+
+        $.ajax({
+            url: 'obtener_espacios_disponibles.php', 
+            type: 'GET',
+            data: { fecha: fechaSeleccionada },
+            dataType: 'json',
+            success: function (response) {
+                if (Array.isArray(response) && response.length > 0) {
+                    let body = $('#espacios-disponibles-body');
+                    response.forEach(function (espacio) {
+                        body.append(`
+                            <tr>
+                                <td>${espacio.nombre}</td>
+                                <td>${espacio.descripcion}</td>
+                                <td>${espacio.capacidad}</td>
+                                <td><img src="${espacio.imagen_url}" alt="${espacio.nombre}" style="width: 100px;"></td>
+                                <td><button class="btn btn-primary" onclick="reservarEspacio(${espacio.id_espacio})">Reservar</button></td>
+                            </tr>
+                        `);
+                    });
+                } else {
+                    $('#espacios-disponibles-body').html('<tr><td colspan="5">No hay espacios disponibles para esta fecha.</td></tr>');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error al obtener los espacios disponibles", error);
+            }
+        });
+    });
+
+    function reservarEspacio(idEspacio) {
+        window.location.href = `reservar.html?id_espacio=${idEspacio}`;
+    }
+</script>
+</body>
+
+</html>
