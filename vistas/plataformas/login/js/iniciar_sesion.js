@@ -21,7 +21,7 @@ $("#frm-login").submit(function (e) {
                     success: function (resultado) {
                         if(resultado.tipo=="General"){
                             window.open("../usuarios/index.html", "_self");
-                        }else{
+                        }else if(resultado.tipo=="Administrador"){
                             window.open("../admin/index.html", "_self");
                         }
                     }

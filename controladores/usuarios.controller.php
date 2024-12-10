@@ -61,7 +61,7 @@ class UsuarioController{
         if($resultado){
             echo json_encode(array("tipo" => "General"));
         }else{
-            echo json_encode(array("tipo" => "General"));
+            echo json_encode(array("tipo" => "Administrador"));
         }
     }
 
