@@ -41,10 +41,11 @@ function obtenerRegistros(){
                         <td>${element.descripcion}</td>
                         <td>${element.capacidad}</td>
                         <td>${element.precio_noche}</td>
-                        <td>${element.imagen_url}</td>
+                        <td><img src="${element.imagen_url}" alt="Habitación"></td>
                         <td>
                         <button class='btn btn-primary btn-sm' onclick="editarEspacio(${element.id_espacio})">Editar</button>
-                        <button class='btn btn-primary btn-sm' onclick="eliminarEspacio(${element.id_espacio})">Eliminar</button>  
+                        <button class='btn btn-primary btn-sm' onclick="eliminarEspacio(${element.id_espacio})">Eliminar</button>
+                        <button class='btn btn-primary btn-sm' onclick="ImagenEspacio(${element.id_espacio})">Subir imagen</button>  
                         </td>
                         <td>
                         <button class='btn btn-primary btn-sm' onclick="reservarEspacio(${element.id_espacio})">Reservar</button>   

@@ -21,6 +21,7 @@ class AlojamientoController {
 
     // Método para guardar un nuevo alojamiento
     function guardarAlojamiento($nombre, $descripcion, $capacidad, $precio_noche, $imagen_url){
+        
         $resultado = $this->alojamiento->guardarAlojamiento($nombre, $descripcion, $capacidad, $precio_noche, $imagen_url);
         if ($resultado) {
             echo json_encode(array("estado" => "exito"));
@@ -30,9 +31,8 @@ class AlojamientoController {
     }
 
     // Método para actualizar un alojamiento
-    function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url){
-
-        $resultado = $this->alojamiento->actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url);
+    function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche){
+        $resultado = $this->alojamiento->actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche);
         if ($resultado) {
             echo json_encode(array("estado" => "exito"));
         } else {
@@ -67,14 +67,23 @@ class AlojamientoController {
 
 }
 
-$obj = new AlojamientoController();
 
+$obj = new AlojamientoController();
+/*
+$_POST['id_espacio']=30; 
+$_POST['nombre']="a";
+$_POST['descripcion']="eeee";
+$_POST['capacidad']="1";
+$_POST['precio_noche']="3.4";
+$_POST['opcion']="editar";
+*/
 $opcion = $_POST['opcion'];
 
 switch($opcion){
     case "guardar":
         header("content-type: application/json");
         $obj->guardarAlojamiento($_POST['nombre'], $_POST['descripcion'], $_POST['capacidad'], $_POST['precio_noche'], $_POST['imagen_url']);
+        break;
     case "listado":
         header("content-type: application/json");
         $obj->obtenerRegistros();
@@ -83,10 +92,9 @@ switch($opcion){
         header("content-type: application/json");
         $obj->obtenerRegistroPorId($_POST['id']);
         break;
-        break;
     case "editar":
         header("content-type: application/json");
-        $obj->actualizarAlojamiento($_POST['id_espacio'], $_POST['nombre'], $_POST['descripcion'], $_POST['capacidad'], $_POST['precio_noche'], $_POST['imagen_url']);
+        $obj->actualizarAlojamiento($_POST['id_espacio'], $_POST['nombre'], $_POST['descripcion'], $_POST['capacidad'], $_POST['precio_noche']);
         break;
     case "eliminar":
         header("content-type: application/json");

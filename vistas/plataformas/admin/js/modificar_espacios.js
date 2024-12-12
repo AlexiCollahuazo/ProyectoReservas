@@ -4,7 +4,7 @@ $("#btn-regresar").click(function(){
 
 $("#frm-espacio").submit(function(e){
     e.preventDefault();
-        if(idEspacio== null){        
+        if(idEspacio== null){       
             $.ajax("../../../controladores/alojamiento.controller.php",{
                 data:{
                     opcion: "guardar",
@@ -13,6 +13,7 @@ $("#frm-espacio").submit(function(e){
                     capacidad: $("#capacidad").val(),
                     precio_noche: $("#precio_noche").val(),
                     imagen_url: $("#imagen_url").val()
+
                 }, 
                 method: 'POST',
                 success: function(resultado){
@@ -24,23 +25,26 @@ $("#frm-espacio").submit(function(e){
                 }
             });
         }else{
+            console.log("HOLA");
             $.ajax("../../../controladores/alojamiento.controller.php",{
                 data:{
                     opcion: "editar",
-                    id: idEspacio,
+                    id_espacio: idEspacio,
                     nombre: $("#nombre").val(),
                     descripcion: $("#descripcion").val(),
                     capacidad: $("#capacidad").val(),
-                    precio_noche: $("#precio_noche").val(),
-                    imagen_url: $("#imagen_url").val()
+                    precio_noche: $("#precio_noche").val()
                 }, 
                 method: 'POST',
                 success: function(resultado){
                     if(resultado.estado === "exito"){
-                        alert("Se ingresó el usuario con éxito");
+                        alert("Se actualizo la habitación con éxito");
                     }else{
-                        alert("Error al eliminar el usuario");
+                        alert("Error al actualizar la habitación");
                     }
+                },error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log("Error en la solicitud AJAX:", status, error);  // Capturar errores de AJAX
                 }
             });
 
@@ -61,7 +65,9 @@ if(idEspacio != null){
             $("#descripcion").val(resultado.descripcion);
             $("#capacidad").val(resultado.capacidad);
             $("#precio_noche").val(resultado.precio_noche);
-            $("#imagen_url").val(resultado.imagen_url); 
+            $("#imagen_url").hide();
+            $("#enunciado").hide();
+            $("#imagen_url").removeAttr("required");
         }
 
     });

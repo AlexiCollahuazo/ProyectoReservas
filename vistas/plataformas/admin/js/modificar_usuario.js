@@ -42,9 +42,9 @@ $("#frm-usuario").submit(function(e){
                 method: 'POST',
                 success: function(resultado){
                     if(resultado.estado === "exito"){
-                        alert("Se ingresó el usuario con éxito");
+                        alert("Se actualizo el usuario con éxito");
                     }else{
-                        alert("Error al eliminar el usuario");
+                        alert("Error al actualizar el usuario");
                     }
                 }
             });

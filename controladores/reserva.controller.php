@@ -57,7 +57,7 @@ class ReservaController {
         }
     }
 */
- 
+ /*
     function obtenerDetallesReserva($id_reserva){
         $detalles = $this->reserva->obtenerDetallesReserva($id_reserva);
         if ($detalles) {
@@ -67,10 +67,7 @@ class ReservaController {
         }
     }
 
-
-
-
-
+*/
 
 }
 

@@ -36,9 +36,9 @@ function __construct(){
         }
     }
 
-    public function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url)
+    public function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche)
     {
-        $sql = "UPDATE espacios SET id_espacio ='$id_espacio', nombre='$nombre', descripcion='$descripcion', capacidad='$capacidad', precio_noche='$precio_noche', imagen_url='$imagen_url' WHERE id_espacio = '$id_espacio'";
+        $sql = "UPDATE espacios SET id_espacio ='$id_espacio', nombre='$nombre', descripcion='$descripcion', capacidad='$capacidad', precio_noche='$precio_noche' WHERE id_espacio = '$id_espacio'";
 
         try {
             $this->conexion->query($sql);
@@ -166,5 +166,5 @@ function __construct(){
             return false;
         }
     }*/
-}
 
+}

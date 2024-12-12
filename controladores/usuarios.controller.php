@@ -68,7 +68,7 @@ class UsuarioController{
 }
 
 $obj = new UsuarioController();
-//$_POST['opcion'] = "validar_accesos";
+//$_POST['opcion'] = "listado";
 //$_POST['nombre_usuario'] = "arodriguez";
 //$_POST['clave'] = "1234";
 
