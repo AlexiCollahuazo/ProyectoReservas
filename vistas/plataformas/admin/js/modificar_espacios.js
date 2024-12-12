@@ -25,7 +25,6 @@ $("#frm-espacio").submit(function(e){
                 }
             });
         }else{
-            console.log("HOLA");
             $.ajax("../../../controladores/alojamiento.controller.php",{
                 data:{
                     opcion: "editar",

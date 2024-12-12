@@ -46,6 +46,10 @@ class ReservaController {
             echo json_encode(array("estado" => "error", "mensaje" => "No se encontraron reservas para este usuario"));
         }
     }
+    
+    function obtenerRegistros(){
+        echo json_encode($this->reserva->obtenerRegistros());
+    }
 
    /*
     function generarCodigoQR(){
@@ -95,7 +99,10 @@ switch($opcion){
         header("content-type: application/json");
         $obj->verHistorialReservas($_POST['id_usuario']);
         break;
-
+    case "listado":
+        header("content-type: application/json");
+        $obj->obtenerRegistros();
+        break;
    /*case "generar_qr":
         header("content-type: application/json");
         $obj->generarCodigoQR();

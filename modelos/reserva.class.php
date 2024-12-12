@@ -78,6 +78,21 @@ class Reserva {
             return $arreglo;
         }
     }
+    function obtenerRegistros(){//ORDER BY fecha_reserva DESC
+        $arreglo = [];
+        $sql = "SELECT * FROM reservas ORDER BY fecha_inicio ASC";
+        try{
+            $resultados = $this->conexion->query($sql);
+            while($fila = $resultados->fetch_assoc()){
+                $arreglo[] = $fila; //Nuevo elemento
+            }
+            return $arreglo;
+        }catch(Exception $e){
+            guardarLog("reserva.log", $e->getMessage());
+            return $arreglo;
+        }
+    }
+
      private function generarCodigoQR() {
        // $codigo_qr = "QR-" . $this->id . "-" . time();
 
