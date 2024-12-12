@@ -8,24 +8,20 @@ class AlojamientoController {
     private $alojamiento;
 
     function __construct(){
-
         $this->alojamiento = new Alojamiento();
     }
-
 
     function obtenerRegistroPorId($id){
         echo json_encode($this->alojamiento->obtenerRegistroPorId($id));
     }
 
- 
     function obtenerRegistros(){
         echo json_encode($this->alojamiento->obtenerRegistros());
     }
 
     // Método para guardar un nuevo alojamiento
-    function guardarAlojamiento($id_usuario, $descripcion, $ubicacion, $precio, $estado){
-  
-        $resultado = $this->alojamiento->guardarAlojamiento($id_usuario, $descripcion, $ubicacion, $precio, $estado);
+    function guardarAlojamiento($nombre, $descripcion, $capacidad, $precio_noche, $imagen_url){
+        $resultado = $this->alojamiento->guardarAlojamiento($nombre, $descripcion, $capacidad, $precio_noche, $imagen_url);
         if ($resultado) {
             echo json_encode(array("estado" => "exito"));
         } else {
@@ -34,9 +30,9 @@ class AlojamientoController {
     }
 
     // Método para actualizar un alojamiento
-    function actualizarAlojamiento($id, $id_usuario, $descripcion, $ubicacion, $precio, $estado){
+    function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url){
 
-        $resultado = $this->alojamiento->actualizarAlojamiento($id, $id_usuario, $descripcion, $ubicacion, $precio, $estado);
+        $resultado = $this->alojamiento->actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url);
         if ($resultado) {
             echo json_encode(array("estado" => "exito"));
         } else {
@@ -53,7 +49,6 @@ class AlojamientoController {
         }
     }
 
- 
     function eliminarAlojamientoLogico($id){
         $resultado = $this->alojamiento->eliminarAlojamientoLogico($id);
         if ($resultado) {
@@ -62,13 +57,13 @@ class AlojamientoController {
             echo json_encode(array("estado" => "error"));
         }
     }
-
+    
     function obtenerAlojamientosActivos(){
         echo json_encode($this->alojamiento->obtenerAlojamientosActivos());
-    }
+    }/*
     function obtenerAlojamientosPorDescripcionOPrecio($descripcion = null, $precio = null){
         echo json_encode($this->alojamiento->obtenerAlojamientoPorDescripcionOPrecio($descripcion, $precio));
-    }
+    }*/
 
 }
 
@@ -77,6 +72,9 @@ $obj = new AlojamientoController();
 $opcion = $_POST['opcion'];
 
 switch($opcion){
+    case "guardar":
+        header("content-type: application/json");
+        $obj->guardarAlojamiento($_POST['nombre'], $_POST['descripcion'], $_POST['capacidad'], $_POST['precio_noche'], $_POST['imagen_url']);
     case "listado":
         header("content-type: application/json");
         $obj->obtenerRegistros();
@@ -85,13 +83,10 @@ switch($opcion){
         header("content-type: application/json");
         $obj->obtenerRegistroPorId($_POST['id']);
         break;
-    case "guardar":
-        header("content-type: application/json");
-        $obj->guardarAlojamiento($_POST['id_usuario'], $_POST['descripcion'], $_POST['ubicacion'], $_POST['precio'], $_POST['estado']);
         break;
     case "editar":
         header("content-type: application/json");
-        $obj->actualizarAlojamiento($_POST['id'], $_POST['id_usuario'], $_POST['descripcion'], $_POST['ubicacion'], $_POST['precio'], $_POST['estado']);
+        $obj->actualizarAlojamiento($_POST['id_espacio'], $_POST['nombre'], $_POST['descripcion'], $_POST['capacidad'], $_POST['precio_noche'], $_POST['imagen_url']);
         break;
     case "eliminar":
         header("content-type: application/json");
@@ -100,17 +95,17 @@ switch($opcion){
     case "eliminar_logico":
         header("content-type: application/json");
         $obj->eliminarAlojamientoLogico($_POST['id']);
-        break;
+        break;/*
     case "obtener_por_descripcion_o_precio":
         header("content-type: application/json");
         $obj->obtenerAlojamientosPorDescripcionOPrecio($_POST['descripcion'], $_POST['precio']);
-        break;
+        break;*/
     case "obtener_activos":
         header("content-type: application/json");
         $obj->obtenerAlojamientosActivos();
         break;
     default:
-        echo json_encode(array("estado" => "error", "mensaje" => "Error:V"));
+        echo json_encode(array("estado" => "error", "mensaje" => "Error"));
         break;
 }
 

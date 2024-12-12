@@ -3,12 +3,13 @@
 class Alojamiento
 {
     //Declaracion de nuestras variables
-    private $id;
-    private $id_usuario;
+    private $id_espacio;
+    private $nombre;
     private $descripcion;
-    private $ubicacion;
-    private $precio;
+    private $capacidad;
     private $estado;
+    private $imagen;
+    private $precio_noche;
     private $conexion;
 
     //Metodo que se llama al crar el objeto
@@ -20,12 +21,12 @@ function __construct(){
         }
     }
 
-    public function guardarAlojamiento($id_usuario, $descripcion, $ubicacion, $precio, $estado)
+    public function guardarAlojamiento($nombre, $descripcion, $capacidad, $precio_noche, $imagen_url)
     {
         //El id se genera y el estado será 1 por defecto
         //Conectarnos a base de datos
-        $sql = "INSERT INTO alojamientos (id_usuario, descripcion, ubicacion, precio, estado) 
-        VALUES ('$id_usuario','$descripcion','$ubicacion',' $precio','$estado')";
+        $sql = "INSERT INTO espacios (nombre, descripcion, capacidad, precio_noche, imagen_url) 
+        VALUES ('$nombre', '$descripcion', '$capacidad','$precio_noche', '$imagen_url')";
         try{
             $this->conexion->query($sql);
             return true;
@@ -35,19 +36,11 @@ function __construct(){
         }
     }
 
-    public function actualizarAlojamiento($id, $id_usuario, $descripcion, $ubicacion, $precio, $estado)
+    public function actualizarAlojamiento($id_espacio, $nombre, $descripcion, $capacidad, $precio_noche, $imagen_url)
     {
-       
-        $sql = "UPDATE alojamiento SET 
-                    id_usuario = '$id_usuario', 
-                    descripcion = '$descripcion', 
-                    ubicacion = '$ubicacion', 
-                    precio = '$precio', 
-                    estado = '$estado' 
-                WHERE id = '$id'";
+        $sql = "UPDATE espacios SET id_espacio ='$id_espacio', nombre='$nombre', descripcion='$descripcion', capacidad='$capacidad', precio_noche='$precio_noche', imagen_url='$imagen_url' WHERE id_espacio = '$id_espacio'";
 
         try {
-           
             $this->conexion->query($sql);
             return true;
         } catch (Exception $e) {
@@ -59,11 +52,9 @@ function __construct(){
 
 
     //Hard delete
-    public function eliminarAlojamiento($id)
+    public function eliminarAlojamiento($id_espacio)
     {
-        // Conectarnos a la base de datos
-        $sql = "DELETE FROM alojamiento WHERE id = '$id'";
-
+        $sql = "DELETE FROM espacios WHERE id_espacio = '$id_espacio'";
         try {
         
             $this->conexion->query($sql);
@@ -76,10 +67,10 @@ function __construct(){
     }
 
     //Soft delete
-    public function eliminarAlojamientoLogico($id)
+    public function eliminarAlojamientoLogico($id_espacio)
     {
 
-    $sql = "UPDATE alojamiento SET estado = '0' WHERE id = '$id'";
+    $sql = "UPDATE espacios SET estado = '0' WHERE id_espacio = '$id_espacio'";
 
     try {
         
@@ -93,21 +84,19 @@ function __construct(){
     }
 
 
-    function obtenerRegistros()
+    public function obtenerRegistros()
     {
         $arreglo = [];
-        $sql = "SELECT * FROM alojamiento";
+        $sql = "SELECT * FROM espacios";
         
         try {
             
             $resultados = $this->conexion->query($sql);
-            
           
             while ($fila = $resultados->fetch_assoc()) {
                 $arreglo[] = $fila; 
             }
-            
-            
+
             return $arreglo;
         } catch (Exception $e) {
             
@@ -117,10 +106,10 @@ function __construct(){
     }
 
 
-   function obtenerRegistroPorId($id)
+   function obtenerRegistroPorId($id_espacio)
     {
         $arreglo = [];
-        $sql = "SELECT * FROM alojamiento WHERE id = '$id'";
+        $sql = "SELECT * FROM espacios WHERE id_espacio = '$id_espacio'";
 
         try {
         
@@ -139,6 +128,25 @@ function __construct(){
         }
     }
 
+// Revisar este metodo porque ando suponiento que los activos son los que tienen 1:v
+    function obtenerAlojamientosActivos()
+    {
+        $arreglo = [];
+        $sql = "SELECT * FROM espacios WHERE estado = 1"; 
+        
+        try {
+            $resultados = $this->conexion->query($sql);
+        
+            while ($fila = $resultados->fetch_assoc()) {
+                $arreglo[] = $fila; 
+            }
+            return $arreglo;
+        } catch (Exception $e) {
+            guardarLog("alojamiento.log", $e->getMessage());
+            return $arreglo;
+        }
+    }
+/*
     function obtenerAlojamientoPorDescripcionOPrecio($descripcion, $precio)
     {
         $sql = "SELECT * FROM alojamiento WHERE descripcion = '$descripcion' AND precio = '$precio'";
@@ -153,33 +161,10 @@ function __construct(){
             }
 
         } catch (Exception $e) {
-          
+
             guardarLog("alojamiento.log", $e->getMessage());
             return false;
         }
-    }
-
-
-// Revisar este metodo porque ando suponiento que los activos son los que tienen 1:v
-    function obtenerAlojamientosActivos()
-    {
-        $arreglo = [];
-        $sql = "SELECT * FROM alojamiento WHERE estado = 1"; 
-        
-        try {
-            $resultados = $this->conexion->query($sql);
-        
-            while ($fila = $resultados->fetch_assoc()) {
-                $arreglo[] = $fila; 
-            }
-            
-
-            return $arreglo;
-        } catch (Exception $e) {
-            guardarLog("alojamiento.log", $e->getMessage());
-            return $arreglo;
-        }
-    }
-
-    
+    }*/
 }
+

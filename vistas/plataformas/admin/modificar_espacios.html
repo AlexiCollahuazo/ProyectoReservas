@@ -59,39 +59,28 @@
 
     <div class="container" style="margin-top: 10px;">
         <button class="btn btn-primary" id="btn-regresar">Regresar</button>
-        <h1 id="titulo" style="text-align: center;">Creación de usuarios</h1>
+        <h1 id="titulo" style="text-align: center;">Creación de Habitación</h1>
 
-        <form id="frm-usuario">
+        <form id="frm-espacio">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="nombre" required>              
             </div>
             <div class="mb-3">
-                <label for="identificacion" class="form-label">Identificación</label>
-                <input type="text" class="form-control" id="identificacion" required>              
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" required>              
             </div>
             <div class="mb-3">
-                <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-                <input type="text" class="form-control" id="nombre_usuario" required>              
+                <label for="capacidad" class="form-label">Capacidad de Personas</label>
+                <input type="number" class="form-control" id="capacidad" required>              
             </div>
             <div class="mb-3">
-                <label for="correo" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="correo" required>              
+                <label for="precio_noche" class="form-label">Precio por noche</label>
+                <input type="text" class="form-control" id="precio_noche" required>              
             </div>
             <div class="mb-3">
-                <label for="tipo" class="form-label">Tipo</label>
-                <select class="form-control" id="tipo" required>
-                    <option value="Administrador">Administrador</option>
-                    <option value="General">General</option>
-                </select>    
-            </div>
-            <div class="mb-3">
-                <label for="clave" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="clave" required>              
-            </div>
-            <div class="mb-3">
-                <label for="re-clave" class="form-label">Repetir contraseña</label>
-                <input type="password" class="form-control" id="re-clave" required>              
+              <label for="imagen_url" class="form-label">Selecciona una imagen de la habitación:</label>
+              <input type="file" id="imagen_url" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
@@ -99,6 +88,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="./js/modificar_usuario.js"></script>
+    <script src="./js/modificar_espacios.js"></script>
 </body>
 </html>

@@ -1,43 +1,38 @@
 $("#btn-regresar").click(function(){
-    window.open("gestion_usuarios.html", "_self");
+    window.open("gestion_espacios.html", "_self");
 });
 
-$("#frm-usuario").submit(function(e){
+$("#frm-espacio").submit(function(e){
     e.preventDefault();
-    if($("#clave").val() != $("#re-clave").val()){
-        alert("Las contraseñas no coinciden");
-    }else{
-        if(idUsuario == null){        
-            $.ajax("../../../controladores/usuarios.controller.php",{
+        if(idEspacio== null){        
+            $.ajax("../../../controladores/alojamiento.controller.php",{
                 data:{
                     opcion: "guardar",
                     nombre: $("#nombre").val(),
-                    identificacion: $("#identificacion").val(),
-                    nombre_usuario: $("#nombre_usuario").val(),
-                    correo: $("#correo").val(),
-                    tipo: $("#tipo").val(),
-                    clave: $("#clave").val()
+                    descripcion: $("#descripcion").val(),
+                    capacidad: $("#capacidad").val(),
+                    precio_noche: $("#precio_noche").val(),
+                    imagen_url: $("#imagen_url").val()
                 }, 
                 method: 'POST',
                 success: function(resultado){
                     if(resultado.estado === "exito"){
-                        alert("Se ingresó el usuario con éxito");
+                        alert("Se ingresó la habitación con éxito");
                     }else{
-                        alert("Error al eliminar el usuario");
+                        alert("Error al ingresar la habitación");
                     }
                 }
             });
         }else{
-            $.ajax("../../../controladores/usuarios.controller.php",{
+            $.ajax("../../../controladores/alojamiento.controller.php",{
                 data:{
                     opcion: "editar",
-                    id: idUsuario,
+                    id: idEspacio,
                     nombre: $("#nombre").val(),
-                    identificacion: $("#identificacion").val(),
-                    nombre_usuario: $("#nombre_usuario").val(),
-                    tipo: $("#tipo").val(),
-                    correo: $("#correo").val(),
-                    clave: $("#clave").val()
+                    descripcion: $("#descripcion").val(),
+                    capacidad: $("#capacidad").val(),
+                    precio_noche: $("#precio_noche").val(),
+                    imagen_url: $("#imagen_url").val()
                 }, 
                 method: 'POST',
                 success: function(resultado){
@@ -50,23 +45,23 @@ $("#frm-usuario").submit(function(e){
             });
 
         }
-    }
 });
 
-var idUsuario =  sessionStorage.getItem("id_usuario");
-if(idUsuario != null){
-    $.ajax("../../../controladores/usuarios.controller.php",{
+var idEspacio =  sessionStorage.getItem("id_espacio");
+if(idEspacio != null){
+    $.ajax("../../../controladores/alojamiento.controller.php",{
         data:{
             opcion: "obtener_registro",
-            id: idUsuario
+            id: idEspacio
         }, 
         method: 'POST',
         success: function(resultado){
-            $("#titulo").text("Editar Información del Usuario");
+            $("#titulo").text("Editar Información de la Habitación");
             $("#nombre").val(resultado.nombre);
-            $("#identificacion").val(resultado.identificacion);
-            $("#nombre_usuario").val(resultado.nombre_usuario);
-            $("#correo").val(resultado.correo);                    
+            $("#descripcion").val(resultado.descripcion);
+            $("#capacidad").val(resultado.capacidad);
+            $("#precio_noche").val(resultado.precio_noche);
+            $("#imagen_url").val(resultado.imagen_url); 
         }
 
     });

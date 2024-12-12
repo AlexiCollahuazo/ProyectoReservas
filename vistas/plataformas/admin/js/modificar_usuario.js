@@ -23,7 +23,7 @@ $("#frm-usuario").submit(function(e){
                     if(resultado.estado === "exito"){
                         alert("Se ingresó el usuario con éxito");
                     }else{
-                        alert("Error al eliminar el usuario");
+                        alert("Error al ingresar el usuario");
                     }
                 }
             });
