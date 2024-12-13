@@ -1,11 +1,104 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Logs por Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .log-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap; /* Preserva los saltos de línea */
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    
+
+    <h1>Logs de Usuario</h1>
+
+    <div class="log-container">
+        <pre>2024-11-26 01:40:59: Table &#039;alojamiento.usuarioss&#039; doesn&#039;t exist
+2024-11-26 01:41:41: Table &#039;alojamiento.usuarioss&#039; doesn&#039;t exist
+2024-11-26 01:41:47: Table &#039;alojamiento.usuarioss&#039; doesn&#039;t exist
+2024-11-26 01:47:37: Table &#039;alojamiento.usuariossss&#039; doesn&#039;t exist
+2024-11-26 01:48:02: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#039;identificacion, nombre, nombre_usuario, clave, correo) 
+        VALUES (&#039;090909&#039; at line 1
+2024-12-03 01:40:08: Data truncated for column &#039;tipo&#039; at row 1
+2024-12-09 00:53:55: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#039;123&#039;),&#039;tjordan@gmail.com&#039;, &#039;GENERAL&#039;)&#039; at line 2
+2024-12-09 00:56:31: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#039;123&#039;),&#039;tjordan@gmail.com&#039;, &#039;GENERAL&#039;)&#039; at line 2
+2024-12-09 00:58:33: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#039;123&#039;),&#039;tjordan@gmail.com&#039;, &#039;GENERAL&#039;)&#039; at line 2
+2024-12-09 05:28:12: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:28:16: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:31:55: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:32:00: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:33:05: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:33:06: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:33:43: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:33:45: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:39:17: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:40:09: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:40:11: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:40:12: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:40:50: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:40:55: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:44:09: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:45:27: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:45:29: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:45:29: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:47:50: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:47:54: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:50:08: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:50:12: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:50:53: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 05:51:00: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 11:45:30: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 11:51:06: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 11:51:39: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 11:53:01: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 12:07:48: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 22:53:22: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 22:53:25: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:10:58: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:13:59: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:14:26: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:14:48: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:17:17: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:17:20: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:17:29: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:17:34: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:17:37: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:18:51: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:18:54: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:19:03: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:25:22: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:25:28: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:26:47: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:26:49: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:27:22: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:27:29: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:27:33: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:27:36: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:27:40: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:28:30: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:29:22: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:30:49: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:30:50: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:47:32: Unknown column &#039;id&#039; in &#039;where clause&#039;
+2024-12-09 23:50:59: Unknown column &#039;id&#039; in &#039;where clause&#039;
+</pre>
+    </div>
+
 </body>
 </html>
