@@ -52,6 +52,19 @@ class Reserva {
         }
     }
 
+    //Buscar reserva activas por habitacion
+    public function cancelarReserva($id_reserva) {
+        $sql = "UPDATE reservas SET estado = 0 WHERE id = '$id_reserva'";
+        try {
+            $this->conexion->query($sql);
+            return true;
+        } catch (Exception $e) {
+            // Guardar el log de error (opcional)
+            guardarLog("reserva.log", $e->getMessage());
+            return false;
+        }
+    }
+
      public function cancelarReserva($id_reserva) {
         $sql = "UPDATE reservas SET estado = 0 WHERE id = '$id_reserva'";
         try {
