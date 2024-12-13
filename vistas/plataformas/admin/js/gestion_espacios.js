@@ -23,6 +23,10 @@ function eliminarEspacio(id){
         }
     });
 }
+function cancelarEspacio(id){
+    sessionStorage.setItem("id_espacio", id);
+    window.open("./consulta.html", "_self");
+}
 
 function obtenerRegistros(){
     $.ajax("../../../controladores/alojamiento.controller.php",{
