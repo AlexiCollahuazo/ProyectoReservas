@@ -16,7 +16,7 @@ function obtenerRegistros(){
                         <td>${element.fecha_inicio}</td>
                         <td>${element.fecha_fin}</td>
                         <td>${element.estado}</td>
-                        <td>${element.observaciones}</td>
+                        <td>${element.observaciones == null ? 'Sin comentarios' : element.observaciones}</td>
                     </tr>`
                 );
             });

@@ -49,6 +49,6 @@ $htmlContent = '
 
 file_put_contents('logs_por_usuario.html', $htmlContent);
 
-header('Location: logs_por_usuario.html');
+header('Location: logs/usuario.log');
 exit;
 ?>
