@@ -41,7 +41,6 @@ function enviarCorreoConDetalles($email, $id_reserva, $id_espacio, $fecha_inicio
     $mail = new PHPMailer(true);
 
     try {
-  
         $mail->isSMTP();                                           
         $mail->Host       = 'sandbox.smtp.mailtrap.io';                       
         $mail->SMTPAuth   = true;                                    
@@ -49,7 +48,7 @@ function enviarCorreoConDetalles($email, $id_reserva, $id_espacio, $fecha_inicio
         $mail->Password   = '3829c0bb94e4b1';                          
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
         $mail->Port       = 587;                                   
-
+        
         $mail->setFrom('no-reply@tusitio.com', 'Sistema de Reservas');
         $mail->addAddress($email);                                 
 
