@@ -5,6 +5,9 @@ require '/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_espacio = $_POST['id_espacio'];
@@ -53,15 +56,32 @@ function enviarCorreoConDetalles($email, $id_reserva, $id_espacio, $fecha_inicio
         $mail->addAddress($email);                                 
 
         $mail->Subject = "Confirmación de Reserva";
-        $mail->Body    = "¡Gracias por tu reserva! Aquí están los detalles de tu reserva:\n\n" .
+        $mail->Body    = "Gracias por tu reserva, Aquí están la info:\n\n" .
                          "ID de Reserva: $id_reserva\n" .
                          "Espacio Reservado: $id_espacio\n" .
                          "Fecha de Inicio: $fecha_inicio\n" .
                          "Fecha de Fin: $fecha_fin\n\n" ;
+
+        $qrFilePath = generarCodigoQR($id_reserva); 
+        $mail->isHTML(true); 
+        $mail->Body .= '<br><img src="cid:qr_code">'; 
+        $mail->addEmbeddedImage($qrFilePath, 'qr_code', 'qr_code.png');  
         $mail->send();
+
         echo 'Correo enviado';
     } catch (Exception $e) {
         echo "Error al enviar el correo: {$mail->ErrorInfo}";
     }
 }
+
+function generarCodigoQR($id_reserva) {
+   $qrCode = new QrCode('Reserva ID: ' . $id_reserva);
+    $writer = new PngWriter();
+    $qrContent = $writer->write($qrCode);  
+    $filePath = 'path/to/qr_codes/reserva_' . $id_reserva . '.png';
+    file_put_contents($filePath, $qrContent); 
+    return $filePath;  
+}
+
+
 ?>
