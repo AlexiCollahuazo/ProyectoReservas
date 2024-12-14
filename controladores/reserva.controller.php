@@ -38,6 +38,10 @@ class ReservaController {
         }
     }
 
+    function consultarReservaHabitacion($id_espacio){
+        echo json_encode($this->reserva->consultarReservaHabitacion($id_espacio));
+    }
+
     function verHistorialReservas($id_usuario){
         $historial = $this->reserva->verHistorialReservas($id_usuario);
         if ($historial) {
@@ -77,6 +81,10 @@ class ReservaController {
 
 $obj = new ReservaController();
 
+//$_POST['opcion'] = "cancelar";
+//$_POST['nombre_usuario'] = "arodriguez";
+//$_POST['id_reserva'] = "5";
+
 $opcion = $_POST['opcion'];
 
 switch($opcion){
@@ -103,16 +111,20 @@ switch($opcion){
         header("content-type: application/json");
         $obj->obtenerRegistros();
         break;
+    case "listado_habitacion":
+        header("content-type: application/json");
+        $obj->consultarReservaHabitacion($_POST['id_espacio']);
+        break;
    /*case "generar_qr":
         header("content-type: application/json");
         $obj->generarCodigoQR();
         break;
-*/
+
     case "detalles":
         header("content-type: application/json");
         $obj->obtenerDetallesReserva($_POST['id_reserva']);
         break;
-
+*/
     default:
         echo json_encode(array("estado" => "error", "mensaje" => "Opción no válida"));
         break;

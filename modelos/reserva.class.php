@@ -51,22 +51,39 @@ class Reserva {
             return false;
         }
     }
-
-    //Buscar reserva activas por habitacion
-    public function cancelarReserva($id_reserva) {
-        $sql = "UPDATE reservas SET estado = 0 WHERE id = '$id_reserva'";
-        try {
-            $this->conexion->query($sql);
-            return true;
-        } catch (Exception $e) {
-            // Guardar el log de error (opcional)
+    function obtenerRegistros(){//ORDER BY fecha_reserva 
+        $arreglo = [];
+        $sql = "SELECT * FROM reservas ORDER BY fecha_inicio ASC";
+        try{
+            $resultados = $this->conexion->query($sql);
+            while($fila = $resultados->fetch_assoc()){
+                $arreglo[] = $fila; //Nuevo elemento
+            }
+            return $arreglo;
+        }catch(Exception $e){
             guardarLog("reserva.log", $e->getMessage());
-            return false;
+            return $arreglo;
+        }
+    }
+    
+    //Buscar reserva activas por habitacion
+    public function consultarReservaHabitacion($id_espacio) {
+        $arreglo = [];
+        $sql = "SELECT * FROM reservas WHERE id_espacio = '$id_espacio' AND estado='ACTIVA' ORDER BY fecha_inicio ASC";
+        try{
+            $resultados = $this->conexion->query($sql);
+            while($fila = $resultados->fetch_assoc()){
+                $arreglo[] = $fila; //Nuevo elemento
+            }
+            return $arreglo;
+        }catch(Exception $e){
+            guardarLog("reserva.log", $e->getMessage());
+            return $arreglo;
         }
     }
 
      public function cancelarReserva($id_reserva) {
-        $sql = "UPDATE reservas SET estado = 0 WHERE id = '$id_reserva'";
+        $sql = "UPDATE reservas SET estado = 'CANCELADA' WHERE id_reserva = '$id_reserva'";
         try {
             $this->conexion->query($sql);
             return true;
@@ -91,20 +108,7 @@ class Reserva {
             return $arreglo;
         }
     }
-    function obtenerRegistros(){//ORDER BY fecha_reserva DESC
-        $arreglo = [];
-        $sql = "SELECT * FROM reservas ORDER BY fecha_inicio ASC";
-        try{
-            $resultados = $this->conexion->query($sql);
-            while($fila = $resultados->fetch_assoc()){
-                $arreglo[] = $fila; //Nuevo elemento
-            }
-            return $arreglo;
-        }catch(Exception $e){
-            guardarLog("reserva.log", $e->getMessage());
-            return $arreglo;
-        }
-    }
+
 
      private function generarCodigoQR() {
        // $codigo_qr = "QR-" . $this->id . "-" . time();

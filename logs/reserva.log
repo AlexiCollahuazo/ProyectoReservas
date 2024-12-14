@@ -1,1 +1,4 @@
 2024-12-12 12:26:12: Unknown column 'fecha_reserva' in 'order clause'
+2024-12-14 01:22:08: Data truncated for column 'estado' at row 1
+2024-12-14 01:25:30: Data truncated for column 'estado' at row 1
+2024-12-14 01:25:38: Data truncated for column 'estado' at row 1
